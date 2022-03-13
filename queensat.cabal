@@ -25,7 +25,8 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      QueenSat
+      Util
   other-modules:
       Paths_queensat
   hs-source-dirs:
@@ -33,6 +34,8 @@ library
   build-depends:
       base >=4.7 && <5
     , picosat
+    , tasty >=1.4
+    , tasty-hunit
   default-language: Haskell2010
 
 executable queensat-exe
@@ -46,6 +49,8 @@ executable queensat-exe
       base >=4.7 && <5
     , picosat
     , queensat
+    , tasty >=1.4
+    , tasty-hunit
   default-language: Haskell2010
 
 test-suite queensat-test
@@ -60,4 +65,6 @@ test-suite queensat-test
       base >=4.7 && <5
     , picosat
     , queensat
+    , tasty >=1.4
+    , tasty-hunit
   default-language: Haskell2010
