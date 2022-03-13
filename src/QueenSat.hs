@@ -10,6 +10,7 @@ genAtLeastOneInRowClauses :: Int -> CNF -> CNF
 genAtLeastOneInRowClauses n = (++) $ splitOn (\x -> x `mod` n == 0) [1..(n*n)]
 
 -- j /= k 
+genBeatClauses :: Int -> Int -> Int -> Int -> CNF
 genBeatClauses n i j k  =  let revI = n - i + 1
                                revJ = n - j + 1
                                revK = n - k + 1
@@ -29,8 +30,10 @@ genRowsColsDiagBeatClauses n = (++) $ do
             True <- [j /= k]
             genBeatClauses n i j k 
 
+genSat :: Int -> CNF 
 genSat n = (genAtLeastOneInRowClauses n) 
          . (genRowsColsDiagBeatClauses n)
          $ [] 
 
+queenSat :: Int -> IO (Solution)
 queenSat n = solve $ genSat n

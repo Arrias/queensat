@@ -5,6 +5,7 @@ import Util
 import System.Environment (getArgs)
 import Picosat
 
+main :: IO ()
 main = do 
     args <- getArgs 
     let n = read $ head args :: Int 
